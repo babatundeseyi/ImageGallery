@@ -41,7 +41,7 @@ html{
 /* GENERAL STYLES */
 
 body {
-    background-color: var(--BG-PRIMARY);
+    background-color: transparent;
     padding: 40px;
     color: white;
     position: relative;
@@ -71,12 +71,84 @@ img {
     color: var(--ACCENT);
 }
 
+/* BACKGROUND STYLES */
+
+.ambient-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #08090B; /* Obsidian - your existing primary background */
+  overflow: hidden;
+  pointer-events: none; /* never intercepts clicks on real content */
+  contain: paint;       /* scopes repaint cost to this layer, see §5 */
+}
+
+.bloom {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.bloom--violet-1 {
+  width: 640px;
+  height: 640px;
+  top: 0;
+  left: 3%;
+  opacity: 0.2;
+  background: radial-gradient(circle, #A78BFA 0%, transparent 90%);
+  animation: drift-1 5s ease-in-out infinite alternate;
+}
+
+.bloom--violet-2 {
+  width: 520px;
+  height: 520px;
+  bottom: 18%;
+  right: 30%;
+  opacity: 0.2;
+  background: radial-gradient(circle, #d40e61 0%, transparent 70%);
+  animation: drift-2 5s ease-in-out infinite alternate;
+  animation-delay: -18s; /* starts partway into its cycle, out of sync with bloom-1 */
+}
+
+.bloom--blue {
+  width: 420px;
+  height: 420px;
+  top: 20%;
+  left: 0;
+  opacity: 0.2; /* Cool Blue: "extremely sparingly" per your palette */
+  background: radial-gradient(circle, #67E8F9 0%, transparent 90%);
+  animation: drift-3 7s ease-in-out infinite alternate;
+  animation-delay: 0.5s;
+}
+
+@keyframes drift-1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(80%, 90%) scale(1.15); }
+}
+
+@keyframes drift-2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(50%, -30%) scale(1.12); }
+}
+
+@keyframes drift-3 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(90%, 50%) scale(1.18); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bloom {
+    animation: none;
+  }
+}
+
 /* HEADER STYLES */
 
 header {
     position: sticky;
     top: 24px;
-    z-index: 100;
+    z-index: 2000;
 }
 
 nav {
@@ -108,8 +180,7 @@ nav {
     color: var(--TEXT-SECONDARY);
 }
 
-.nav-link:hover,
-.nav-link:focus {
+.nav-link:hover {
     color: var(--TEXT-PRIMARY);
     text-decoration: underline 2px var(--ACCENT);
     text-underline-offset: 8px;
@@ -187,8 +258,12 @@ section {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    display: inline-block;
-    padding-bottom: 64px;
+    max-width: 100%;
+    min-height: 560px;
+}
+
+.featured-image-container {
+    position: relative;
 }
 
 .featured-image {
@@ -198,10 +273,27 @@ section {
     border-radius: var(--RADIUS-LG);
 }
 
+/* NEW CODE */
+.new-image {
+    position: absolute;
+    inset: 0;
+    width: 95%;
+    height: auto;
+    border-radius: var(--RADIUS-LG);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    }
+
+.new-image.visible {
+  opacity: 1;
+}
+/* NEW COSE END */
+
 .featured-image-overlay {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 24px;
+    z-index: 1500;
 }
 
 .metadata-card {
@@ -212,10 +304,6 @@ section {
     gap: 4px;
     border-radius: var(--RADIUS-MD);
     padding: 24px;
-    position: absolute;
-    bottom: 0;
-    left: 24px;
-    z-index: 10px;
 }
 
 .metadata-counter {
@@ -242,10 +330,8 @@ section {
 .nav-control-container {
     display: flex;
     gap: 16px;
-    position: absolute;
-    bottom: 0;
-    right: 24px;
-    z-index: 10;
+    justify-content: flex-end;
+    padding-top: 24px;
 }
 
 .nav-control {
@@ -465,6 +551,12 @@ footer {
     font-size: 14px;
     font-weight: 500;
     color: var(--TEXT-SECONDARY);
+}
+
+.social-link,
+.social-link:active,
+.social-link:visited {
+    color: var(--TEXT-PRIMARY);
 }
 
 /* ANIMATION */
