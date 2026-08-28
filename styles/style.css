@@ -49,10 +49,14 @@ body {
 
 a {
     text-decoration: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 img {
     display: block;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .glass-fill {
