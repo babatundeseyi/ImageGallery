@@ -23,7 +23,7 @@ html{
     --TEXT-SECONDARY: #A1A1AA;
     --ACCENT: #A78BFA;
     --HIGHLIGHT: #67E8F9;
-    --SCRIM-LIGHTBOX: rgba(4,5,7,0.92);
+    --SCRIM-LIGHTBOX: rgba(4, 5, 7, 0.6);
     --SCRIM-CARD: linear-gradient(180deg, rgba(8,9,11,0) 45%, rgba(8,9,11,0.82) 100%);
 
     /* FONTS */
@@ -46,12 +46,20 @@ body {
     color: white;
 }
 
+body.lightbox-open {
+    overflow: hidden;
+}
+
 a {
     text-decoration: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 img {
     display: block;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .glass-fill {
@@ -431,6 +439,218 @@ footer {
 .social-link:active,
 .social-link:visited {
     color: var(--TEXT-PRIMARY);
+}
+
+/*LIGHTBOX*/
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--SCRIM-LIGHTBOX);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 300ms ease,
+        visibility 300ms ease;
+}
+
+.lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+     user-select: none;
+    -webkit-user-drag: none;
+}
+
+.lightbox-image-container {
+    max-width: 80vw;
+    max-height: 70vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid var(--GLASS-BORDER);
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.lightbox-image {
+    display: block;
+
+    max-width: 80vw;
+    max-height: 70vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+}
+
+.lightbox-metadata {
+    margin-top: 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.lightbox-counter,
+.lightbox-title,
+.lightbox-category {
+    margin: 0;
+}
+
+.lightbox-counter {
+    font-family: var(--MANROPE);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--TEXT-SECONDARY);
+}
+
+.lightbox-title {
+    margin-top: 7px;
+    font-family: var(--MANROPE);
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--TEXT-PRIMARY);
+}
+
+.lightbox-category {
+    margin-top: 5px;
+
+    font-family: var(--MANROPE);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--TEXT-SECONDARY);
+}
+
+.lightbox-navigation {
+    position: absolute;
+
+    top: 50%;
+
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 0;
+
+    border: 1px solid var(--GLASS-BORDER);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    cursor: pointer;
+}
+
+.lightbox-navigation:disabled {
+    opacity: 0.25;
+    cursor: default;
+}
+
+.lightbox-navigation--previous {
+    left: calc(50% - min(35vw, 470px) - 70px);
+}
+
+.lightbox-navigation--next {
+    right: calc(50% - min(35vw, 470px) - 70px);
+}
+
+.lightbox-navigation span {
+    width: 12px;
+    height: 12px;
+
+
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+}
+
+.lightbox-navigation--previous span {
+    transform: rotate(-135deg);
+}
+
+.lightbox-navigation--next span {
+    transform: rotate(45deg);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    cursor: pointer;
+}
+
+.lightbox-close span {
+    position: absolute;
+
+    width: 16px;
+    height: 1px;
+
+    background: white;
+}
+
+.lightbox-close span:first-child {
+    transform: rotate(45deg);
+}
+
+.lightbox-close span:last-child {
+    transform: rotate(-45deg);
+}
+
+.lightbox-navigation,
+.lightbox-close {
+    transition:
+        background 200ms ease,
+        border-color 200ms ease,
+        opacity 200ms ease;
+}
+
+.lightbox-navigation:not(:disabled):hover,
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.35);
 }
 
 /* ANIMATIONS */
