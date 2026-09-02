@@ -34,36 +34,33 @@
 
     <header>
       <nav class="glass-fill">
-        <div>
-          <svg
-            width="190"
-            height="40"
-            viewBox="0 0 230 56"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Qavyn"
+        <svg
+          class="logo"
+          viewBox="0 0 110 56"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Qavyn"
+        >
+          <text
+            x="0"
+            y="41"
+            font-family="'Space Grotesk', sans-serif"
+            font-weight="600"
+            font-size="30"
+            letter-spacing="-0.5"
+            fill="#F4F4F5"
           >
-            <text
-              x="0"
-              y="41"
-              font-family="'Space Grotesk', sans-serif"
-              font-weight="600"
-              font-size="30"
-              letter-spacing="-0.5"
-              fill="#F4F4F5"
-            >
-              Qavyn
-            </text>
-            <circle
-              cx="100"
-              cy="20"
-              r="5"
-              fill="none"
-              stroke="#A78BFA"
-              stroke-width="2.5"
-            />
-          </svg>
-        </div>
+            Qavyn
+          </text>
+          <circle
+            cx="100"
+            cy="20"
+            r="5"
+            fill="none"
+            stroke="#A78BFA"
+            stroke-width="2.5"
+          />
+        </svg>
 
         <div class="nav-link-container">
           <a class="nav-link" href="gallery.html">Gallery</a>
@@ -101,7 +98,7 @@
 
       <section id="featured-images-section">
         <div
-          class="featured-image-container js-featured-image-container scroll-reveal"
+          class="featured-image-container js-featured-image-container featured-reveal"
         >
           <img
             src="https://picsum.photos/id/683/1200/560"
@@ -112,7 +109,7 @@
 
         <div class="featured-image-overlay js-featured-image-overlay">
           <div
-            class="metadata-card js-metadata-card glass-fill scroll-reveal"
+            class="metadata-card js-metadata-card glass-fill featured-reveal"
             style="animation-range: entry 10% entry 90%"
           >
             <p class="metadata-counter">01 / 12</p>
@@ -122,7 +119,7 @@
         </div>
 
         <div
-          class="nav-control-container js-nav-control-container scroll-reveal"
+          class="nav-control-container js-nav-control-container featured-reveal"
         >
           <span
             class="material-symbols-outlined nav-control glass-fill js-back-arrow"
