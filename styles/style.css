@@ -163,17 +163,14 @@ nav {
     border-radius: var(--RADIUS-PILL);
 }
 
-.noir-frame {
-    font-family: var(--SPACE-GROTESK);
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--TEXT-PRIMARY);
+.logo {
+  width: 90px;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .nav-link-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     gap: 24px;
 }
 
@@ -212,8 +209,7 @@ nav {
 /* MAIN STYLES */
 main {
     display: flex;
-    flex-direction: column;
-    /* gap: 64px; */      
+    flex-direction: column;     
     margin-bottom: 64px;
 }
 
@@ -602,5 +598,67 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+.featured-reveal {
+    opacity: 0;
+    transform: translateY(50%);
+    animation: featuredreveal linear both;
+    animation-timeline: view();
+    animation-range: entry 10% entry 100%;
+}
+
+@keyframes featuredreveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE DESIGN - TABLET */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    body {
+        padding: 32px;
+    }
+
+    #hero-section {
+        max-width: 90vw;
+    }
+
+    .hero-heading {
+        font-size: 58px;
+    }
+
+    .featured-image-overlay {
+        bottom: clamp(10px, 20px, 30px);
+    }
+
+    .featured-reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: featuredreveal 4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: 1s;
+    }
+
+    @keyframes featuredreveal {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .collections {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .category-card {
+        max-width: clamp(41vw, 44vw, 45vw);
+    }
+
+    #about-section {
+        max-width: 70vw;
     }
 }
