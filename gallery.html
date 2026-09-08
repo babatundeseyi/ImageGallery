@@ -14,6 +14,10 @@
     />
 
     <!-- ICON LINK -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&icon_names=arrow_back,arrow_forward,close,menu"
+    />
     <link rel="icon" type="image/svg+xml" href="assets/qavyn-icon.svg" />
     <link rel="alternate icon" href="assets/favicon.ico" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
@@ -29,7 +33,7 @@
     </div>
 
     <header>
-      <nav class="glass-fill">
+      <nav class="desktop-nav glass-fill">
         <svg
           class="logo"
           viewBox="0 0 110 56"
@@ -79,6 +83,55 @@
         </p>
       </div>
     </header>
+
+    <nav class="mobile-nav js-mobile-nav">
+      <div class="menu">
+        <svg
+          class="logo"
+          viewBox="0 0 110 56"
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-label="Qavyn"
+        >
+          <text
+            x="0"
+            y="41"
+            font-family="'Space Grotesk', sans-serif"
+            font-weight="600"
+            font-size="30"
+            letter-spacing="-0.5"
+            fill="#F4F4F5"
+          >
+            Qavyn
+          </text>
+          <circle
+            cx="100"
+            cy="20"
+            r="5"
+            fill="none"
+            stroke="#A78BFA"
+            stroke-width="2.5"
+          />
+        </svg>
+        <span class="material-symbols-outlined js-menu-control"> menu </span>
+      </div>
+
+      <div class="menu-container js-menu-container">
+        <a class="menu-nav-link" href="/">Home</a>
+        <a class="menu-nav-link" href="/#collection-section">Collections</a>
+        <a class="menu-nav-link" href="/#about-section">About</a>
+
+        <div class="menu-footer">
+          <a class="explore" href="gallery.html">
+            <div class="glass-fill explore-container js-explore-container">
+              Explore
+            </div>
+          </a>
+
+          <div class="bottom-line">&copy; 2026 Qavyn / Babatunde Oluwaseyi</div>
+        </div>
+      </div>
+    </nav>
 
     <main>
       <section id="gallery">

@@ -737,10 +737,102 @@ footer {
         padding: 16px;
     }
 
-    nav {
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    header {
+        padding-top: 80px;
+    }
+
+    .desktop-nav {
         display: none;
     }
 
+    .mobile-nav {
+        display: block;
+        background-color: none;
+        border-radius: 0px;
+        padding: 16px;
+        width: 100vw;
+        height: 100vh;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        z-index: 0;
+    }
+
+    .mobile-nav.is-open {
+        background-color: var(--BG-PRIMARY);
+        z-index: 2000;
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .menu-container {
+        padding-top: 32px;
+        display: none;
+        opacity: 0;
+        flex-direction: column;
+        animation: isOpen 0.5s ease forwards;
+    }
+
+    @keyframes isOpen {
+        to {
+            opacity: 1;
+        }
+    }
+
+    .menu-nav-link {
+        font-family: var(--SPACE-GROTESK);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--TEXT-PRIMARY);
+        border-top: 1px solid var(--TEXT-SECONDARY);
+        padding: 16px 0px;
+    }
+
+    .menu-nav-link:hover, 
+    .menu-nav-link:focus, 
+    .menu-nav-link:active {
+        color: var(--ACCENT);
+    }
+
+    .menu-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        position: absolute;
+        bottom: 60px;
+        width: 90vw;
+    }
+
+    .explore-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+    }
+
+    .explore-container:hover{
+        transform: scale(1);
+    }
+
+    .explore {
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    .bottom-line {
+        text-align: center;
+    }
+    
     .nav-link{
         font-size: 12px;
     }
@@ -759,6 +851,7 @@ footer {
 
     .gallery-heading-supporting-line{
         font-size: 15px;
+        width: 90vw;
     }
 
     .gallery-filter-container {

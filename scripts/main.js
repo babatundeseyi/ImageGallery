@@ -1,6 +1,7 @@
 import { galleryImages } from './data/gallery-images.js';
 import { featuredImages } from './data/featured-images.js';
 import { formatNumber } from './utils/numberformatter.js';
+import { renderMobileMenu } from './utils/mobileMenu.js';
 
 let currentIndex = 0;
 
@@ -31,6 +32,9 @@ function preloadImages() {
     img.src = image.thumbUrl;
   });
 }
+
+//this function renders mobile menu of the page for mobile devices
+renderMobileMenu();
 
 // this event listener performs navigation action. It checks which nav button was clicked and calls the appropriate function for each.
 document.querySelector('.js-nav-control-container').addEventListener('click', (e) => {

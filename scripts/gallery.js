@@ -1,5 +1,6 @@
 import { galleryImages } from './data/gallery-images.js';
 import { architectureImages, natureImages, travelImages, peopleImages, objectsImages } from './data/image-categories.js';
+import { renderMobileMenu } from './utils/mobileMenu.js';
 
 const filterContainer = document.querySelector('.gallery-filter-container');
 const galleryGrid = document.querySelector('.js-gallery-grid');
@@ -20,6 +21,8 @@ const lightboxClose = document.querySelector('.js-lightbox-close');
 
 generateHtml(galleryImages);
 selectcategories();
+
+renderMobileMenu();
 
 function selectcategories() {
     galleryImages.forEach((galleryImage) => {
