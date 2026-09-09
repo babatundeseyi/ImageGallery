@@ -2,10 +2,9 @@
 const menuControl = document.querySelector('.js-menu-control');
 const menuContainer = document.querySelector('.js-menu-container');
 const mobileNav = document.querySelector('.js-mobile-nav');
-const exploreButton = document.querySelector('.js-explore-container');
 
 export function renderMobileMenu() {
-    /* Event listener for the menu icon with conditional if-else statement. checks which menu is currently being displayed and performs and action baed on it */
+    /* Event listener for the menu icon with conditional if-else statement. checks which menu is currently being displayed and performs an action based on it */
   menuControl.addEventListener('click', () => {
     /* this open the menu when the menu icon is clicked */
     if (menuControl.innerText === "menu") {
