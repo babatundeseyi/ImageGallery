@@ -12,6 +12,8 @@ const lightboxCategory = document.querySelector('.js-lightbox-category');
 const lightboxCounter = document.querySelector('.js-lightbox-counter');
 const lightboxImageContainer = document.querySelector('.lightbox-image-container');
 
+const backToTop = document.querySelector('.js-back-to-top');
+
 let currentGallery = galleryImages;
 let currentIndex = 0;
 let lightboxRequestId = 0;
@@ -331,3 +333,15 @@ function closeLightbox() {
 
     document.body.classList.remove('lightbox-open');
 }
+
+/* Controls back to top arrow visibility */
+
+window.addEventListener('scroll', () => {
+
+    if (window.scrollY > 150) {
+        backToTop.classList.add('is-visible');
+    } else {
+        backToTop.classList.remove('is-visible');
+    }
+
+});
